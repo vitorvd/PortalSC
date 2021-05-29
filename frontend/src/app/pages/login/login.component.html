@@ -1,0 +1,23 @@
+<div class="container">
+  <section class="auth-container">
+    <img src="../../../assets/logo.png" alt="Logo Santa Cruz">
+
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <h1>Já sou cadastrado(a)</h1>
+      <input formControlName="login"
+             [ngClass]="applyCssError('login')"
+             required minlength="4" type="text" placeholder="Usuário">
+
+      <input formControlName="password"
+             [ngClass]="applyCssError('password')"
+             required minlength="4" type="password" placeholder="Senha">
+
+      <div class="form-group">
+        <input type="checkbox" id="save-user" name="save-user">
+        <label for="save-user">Lembrar-se de mim</label>
+      </div>
+
+      <button type="submit" [disabled]="!authForm.valid">Entrar</button>
+    </form>
+  </section>
+</div>

@@ -1,0 +1,7 @@
+<div class="header-text">
+  <div *ngIf="router.url == '/portal/logs/details'" class="arrow-left" (click)="router.navigateByUrl('/portal/logs')">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  <h1>{{getText()}}</h1>
+  <p-breadcrumb class="route-link" [model]="getItems()"></p-breadcrumb>
+</div>

@@ -1,0 +1,38 @@
+.header-text {
+  background-color: rgba(139,0,0,0.9);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  color: white;
+  width: 100%;
+
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 10px 40px;
+
+  > .arrow-left {
+    width: 20px;
+    cursor: pointer;
+    grid-column: 1;
+  }
+
+  > h1 {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 22px;
+    grid-column: 2;
+  }
+
+  > p-breadcrumb {
+    grid-column: 3;
+    text-align: end;
+  }
+
+  @media (max-width: 760px){
+    padding: 10px 8px;
+    > h1 {
+      font-size: 16px;
+    }
+  }
+
+}

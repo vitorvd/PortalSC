@@ -1,0 +1,58 @@
+<app-header-text [text]="text" [items]="items"></app-header-text>
+<div class="log-body" *ngIf="filterForm">
+  <form [formGroup]="filterForm" id="filterForm" (ngSubmit)="onSubmit()">
+    <div class="form-label-input processo">
+      <label>Processo:</label>
+      <input formControlName="process" type="text" placeholder="Processo" >
+    </div>
+
+    <div class="form-label-input status">
+      <label>Status:</label>
+      <input formControlName="status" type="text" placeholder="Status">
+    </div>
+
+    <div class="form-label-input dataInicio">
+      <label>Data de Início:</label>
+      <p-calendar [locale]="pt" dateFormat="yy-mm-dd" formControlName="startDate" placeholder="Data de Início"></p-calendar>
+    </div>
+
+    <div class="form-label-input dataTermino">
+      <label>Data de Término:</label>
+      <p-calendar [locale]="pt" dateFormat="yy-mm-dd" formControlName="endDate" placeholder="Data de Término"></p-calendar>
+    </div>
+
+    <div class="form-label-input usuario">
+      <label>Usuário:</label>
+      <input formControlName="user" type="text" placeholder="Usuário">
+    </div>
+
+    <div class="button-group">
+      <button type="reset">Limpar</button>
+      <button type="submit">Consultar</button>
+    </div>
+  </form>
+
+  <p-table [value]="logs" styleClass="p-datatable-striped">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Processo</th>
+        <th>Data do Início</th>
+        <th>Data do Término</th>
+        <th>Usuário</th>
+        <th>Status</th>
+        <th>Opções</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-log>
+      <tr>
+        <td>{{log.process}}</td>
+        <td>{{log.startDate}}</td>
+        <td>{{log.endDate}}</td>
+        <td>{{log.status}}</td>
+        <td>{{log.userLogin}}</td>
+        <td><i (click)="getDetails(log)" class="fas fa-search-plus"></i></td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>

@@ -1,0 +1,90 @@
+.log-body {
+  background-color: #ffffff;
+  border: solid 1px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  font-size: 15px;
+  max-width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+
+  @media (max-width: 760px){
+    padding: 12px;
+  }
+
+  form {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+      "processo processo status"
+      "dataInicio dataTermino usuario"
+      ". . botao";
+    margin-bottom: 20px;
+
+    @media (max-width: 760px){
+      display: grid;
+      grid-gap: 20px;
+      grid-template-rows: 1fr;
+      grid-template-areas:
+      "processo"
+      "status"
+      "dataInicio"
+      "dataTermino"
+      "usuario"
+      "botao";
+    }
+
+    input {
+      height: 35px;
+      padding-left: 10px;
+      border: 1px solid rgba(122,130,133, 0.5);
+      background-color: rgba(220, 220, 230, 0.1);
+      border-radius: 5px;
+      outline: 0;
+      transition: 0.5s;
+    }
+
+    input:hover, input:focus {
+      border: 1px solid rgba(0,127,255, 1);
+    }
+
+    label {
+      margin-bottom: 8px;
+      font-weight: 200;
+    }
+
+    > .form-label-input {
+      display: flex;
+      flex-direction: column;
+    }
+
+    > .processo { grid-area: processo; }
+    > .status { grid-area: status; }
+    > .dataInicio { grid-area: dataInicio; }
+    > .dataTermino { grid-area: dataTermino; }
+    > .usuario { grid-area: usuario; }
+
+    > .button-group {
+      grid-area: botao;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5%;
+      justify-content: space-between;
+      > button {
+        height: 35px;
+        width: 45%;
+        border: none;
+        background-color: rgba(42,49,78,1);
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      > button:first-child {
+        background-color: rgba(252,25,25,0.9);
+      }
+    }
+  }
+  .fa-search-plus {
+    cursor: pointer;
+  }
+}
