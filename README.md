@@ -11,6 +11,8 @@ Um projeto desenvolvido para tornar mais maduros meus conhecimentos com o Spring
 | Lombook | Gerar Getters e Setters por Annotations |
 | BCrypt | Criptografia |
 | Angular 2 | Framework frontend |
+| SCSS | Pré compilador CSS |
+| TypeScript | SuperSettings tipado do JavaScript |
 
 # Como inicializar?
 
