@@ -18,7 +18,9 @@ Um projeto desenvolvido para tornar mais maduros meus conhecimentos com o Spring
 Para o projeto funcionar de forma adequada, será necessário realizar a conexão com o SGBD, neste caso, o Postegres.
 Dentro do diretório **"/main/resources"** altere os campos:
 > spring.datasource.url: » COLOQUE AQUI A URL
+> 
 > spring.datasource.username: » COLOQUE AQUI O USERNAME
+> 
 > spring.datasource.password: » COLOQUE AQUI A SENHA
 
 ## Angular 2 (Front-end):
