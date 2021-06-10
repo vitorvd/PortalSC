@@ -1,0 +1,88 @@
+.content-container {
+  background-color: #ffffff;
+  border: solid 1px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  font-size: 15px;
+  max-width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+
+  @media (max-width: 760px){
+    padding: 12px;
+  }
+
+  form {
+    margin-bottom: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+      "profile createdAt untilAt"
+      "status login botao";
+
+    @media (max-width: 760px){
+      display: grid;
+      grid-gap: 20px;
+      grid-template-rows: 1fr;
+      grid-template-areas:
+      "profile"
+      "createdAt"
+      "untilAt"
+      "status"
+      "login"
+      "botao";
+    }
+
+    > .form-group {
+      display: flex;
+      flex-direction: column;
+      > label {
+        margin-bottom: 8px;
+        font-weight: 200;
+      }
+    }
+
+    > .profile {grid-area: profile}
+    > .createdAt {grid-area: createdAt}
+    > .untilAt {grid-area: untilAt}
+    > .status {grid-area: status}
+    > .login {grid-area: login}
+
+    > .button-group {
+      grid-area: botao;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      > button {
+        height: 35px;
+        width: 45%;
+        border: none;
+        background-color: rgba(42,49,78,1);
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      > button:first-child {
+        background-color: rgba(252,25,25,0.9);
+      }
+    }
+  }
+
+  /* Icons */
+  tr > td:last-child > i {
+    padding: 3px 15px;
+    margin: 0 2px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: rgba(0,0,0,0.6);
+    border: solid 1px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    transition: border 0.5s;
+    &:hover {
+      border: solid 1px rgba(0,0,0,0.6);
+    }
+  }
+
+}

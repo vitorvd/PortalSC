@@ -15,6 +15,13 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TableModule} from "primeng/table";
 import { LogDetailComponent } from './pages/log-detail/log-detail.component';
 import {BreadcrumbModule} from "primeng/breadcrumb";
+import { ConsultarUserComponent } from './pages/consultar-user/consultar-user.component';
+import {DropdownModule} from "primeng/dropdown";
+import {InputTextModule} from "primeng/inputtext";
+import { CriarUserComponent } from './pages/criar-user/criar-user.component';
+import {ToastModule} from "primeng/toast";
+import {InputSwitchModule} from "primeng/inputswitch";
+import {ConfirmDialogModule, ProgressBarModule} from "primeng/primeng";
 
 @NgModule({
   declarations: [
@@ -24,18 +31,27 @@ import {BreadcrumbModule} from "primeng/breadcrumb";
     LoginComponent,
     HomeComponent,
     ConsultarLogComponent,
-    LogDetailComponent
+    LogDetailComponent,
+    ConsultarUserComponent,
+    CriarUserComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    CalendarModule,
-    TableModule,
-    BreadcrumbModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        CalendarModule,
+        TableModule,
+        BreadcrumbModule,
+        DropdownModule,
+        FormsModule,
+        InputTextModule,
+        ToastModule,
+        InputSwitchModule,
+        ProgressBarModule,
+        ConfirmDialogModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

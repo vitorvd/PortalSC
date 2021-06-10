@@ -1,13 +1,17 @@
 package br.com.santacruz.portal.modelo;
 
+import br.com.santacruz.portal.enums.PerfilType;
+import br.com.santacruz.portal.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -23,10 +27,28 @@ public class User {
     private String login;
 
     @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private String passwordHash;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date lastAccess;
+    @Enumerated(EnumType.STRING)
+    private PerfilType perfilType;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @Column(nullable = false)
+    private String company;
+
+    @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+    private LocalDateTime createdAt;
+
+    @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+    private LocalDateTime updatedAt;
 
 }

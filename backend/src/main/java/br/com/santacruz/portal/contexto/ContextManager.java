@@ -23,7 +23,7 @@ public class ContextManager {
     public void init(){
         this.servletContext.setAttribute(MANAGER_CONTEXT, new HashMap<String, Object>());
     }
-
+    
     public void addToken(String token, Object user) {
         this.getMap().put(token, user);
     }

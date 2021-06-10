@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Portal-SantaCruz:war">
+    <output-path>$PROJECT_DIR$/backend/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Portal-SantaCruz</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Portal-SantaCruz-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Portal-SantaCruz:war exploded" />
+    </root>
+  </artifact>
+</component>

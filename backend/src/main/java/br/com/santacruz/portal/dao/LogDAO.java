@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface LogDAO extends DAO<Long, Log> {
-        //https://stackoverflow.com/questions/45775967/multiple-clause-query-in-spring-boot
-    public List<Log> findAllByProcessContainsAndStatusEqualsAndUserLoginEqualsAndStartDateGreaterThanEqualAndEndDateLessThanEqual(String process, String status, String userLogin, LocalDate startDate, LocalDate endDate);
+
+    //public List<Log> findAllByProcessContainsAndStatusEqualsAndUserLoginEqualsAndStartDateGreaterThanEqualAndEndDateLessThanEqual(String process, String status, String userLogin, LocalDate startDate, LocalDate endDate);
 
 }

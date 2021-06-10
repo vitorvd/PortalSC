@@ -11,9 +11,22 @@
   padding: 10px 40px;
 
   > .arrow-left {
-    width: 20px;
-    cursor: pointer;
     grid-column: 1;
+
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+    > i {
+      background-color: rgba(42,49,78,1);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.8);
+
+      text-align: center;
+      cursor: pointer;
+      padding: 8px;
+      width: 6%;
+    }
   }
 
   > h1 {

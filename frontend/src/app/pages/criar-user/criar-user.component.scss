@@ -1,0 +1,65 @@
+.content-container {
+  display: block;
+
+  background-color: #ffffff;
+  border: solid 1px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  font-size: 15px;
+  max-width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+
+  @media (max-width: 760px){
+    padding: 12px;
+  }
+
+  form {
+    margin-bottom: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+      "profile profile profile profile profile"
+      "login email status company ad"
+      ". . . botao botao";
+
+    > .form-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      > label {
+        margin-bottom: 8px;
+        font-weight: 200;
+      }
+    }
+
+    .has-error {
+      border: 1px solid rgb(252, 25, 25, 0.9);
+    }
+
+    > .profile {grid-area: profile}
+    > .login {grid-area: login}
+    > .email {grid-area: email}
+    > .status {grid-area: status}
+    > .company {grid-area: company}
+    > .ad {
+      grid-area: ad;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    > button {
+      grid-area: botao;
+      height: 35px;
+      border: none;
+      background-color: rgba(42,49,78,1);
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+  }
+
+}

@@ -4,6 +4,7 @@ import br.com.santacruz.portal.modelo.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -16,10 +17,10 @@ public class UserDTO {
 
     private String login;
 
-    private Date lastAccess;
+    private LocalDateTime createdAt;
 
     public static UserDTO toDTO(User user, String token) {
-        return new UserDTO(user.getId(), token, user.getLogin(), user.getLastAccess());
+        return new UserDTO(user.getId(), token, user.getLogin(), user.getCreatedAt());
     }
 
 }

@@ -1,10 +1,18 @@
 package br.com.santacruz.portal.security;
 
 import br.com.santacruz.portal.contexto.ContextManager;
+import br.com.santacruz.portal.enums.PerfilType;
+import br.com.santacruz.portal.enums.Status;
 import br.com.santacruz.portal.fachada.UserService;
 import br.com.santacruz.portal.modelo.User;
 import br.com.santacruz.portal.modelo.dto.UserDTO;
+import br.com.santacruz.portal.modelo.dto.UserQueryDTO;
+import br.com.santacruz.portal.modelo.dto.UserQueryResponseDTO;
+import br.com.santacruz.portal.modelo.dto.UserRegisterDTO;
+import br.com.santacruz.portal.utils.DateConvertUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
@@ -13,9 +21,12 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @PermitAll
 @Component
@@ -28,23 +39,12 @@ public class AuthEndPoint {
     @Autowired
     private UserService userService;
 
-    @GET
-    @Path("register")
-    public Response register() {
-        User user = User.builder()
-                .login("vitor")
-                .passwordHash(BCrypt.hashpw("teste", BCrypt.gensalt(10)))
-                .lastAccess(new Date()).build();
-        userService.save(user);
-        return Response.ok().build();
-    }
-
     @POST
     public Response auth(@HeaderParam("login") final String login, @HeaderParam("password") final String password) throws Exception {
         User loggedUser = this.processLogin(login, password);
 
         String token = login + password + LocalDateTime.now();
-        this.registerToken(token, loggedUser);
+        this.contextManager.addToken(token, loggedUser);
 
         return this.createResponseAuth(token, loggedUser);
     }
@@ -52,7 +52,7 @@ public class AuthEndPoint {
     @GET
     @Path("logout")
     public Response logout(@HeaderParam("authorization") final String token){
-        if(token != null) this.processLogout(token);
+        if(token != null) this.contextManager.removeToken(token);
         return Response.noContent().build();
     }
 
@@ -71,17 +71,8 @@ public class AuthEndPoint {
         map.put("user", user);
 
         final Response response = Response.ok(UserDTO.toDTO(user, token), MediaType.APPLICATION_JSON).build();
-        this.userService.setLastAccess(user);
 
         return response;
-    }
-
-    protected void processLogout(final String token) {
-        this.contextManager.removeToken(token);
-    }
-
-    protected void registerToken( final String token, final User user) {
-        this.contextManager.addToken(token, user);
     }
 
 }
