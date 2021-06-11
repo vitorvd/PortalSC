@@ -62,18 +62,6 @@ public class UserEndPoint {
         return ResponseEntity.status(HttpStatus.IM_USED.value()).body(dto.getLogin() + " já registrado!");
     }
 
-    @DELETE
-    @Path("/delete/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public ResponseEntity register(@PathParam("id") Long id) {
-        Optional<User> userDeleted = service.delete(id);
-
-        if(!userDeleted.isPresent()) return ResponseEntity.status(HttpStatus.CONFLICT).body(userDeleted.get().getLogin() + " não encontrado.");
-
-        return ResponseEntity.status(HttpStatus.ACCEPTED.value()).body(userDeleted.get().getLogin() + " excluído.");
-    }
-
     @PUT
     @Path("/edit/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -86,8 +74,20 @@ public class UserEndPoint {
         return ResponseEntity.status(HttpStatus.ACCEPTED.value()).body("Usuário atualizado.");
     }
 
+    @DELETE
+    @Path("/delete/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public ResponseEntity delete(@PathParam("id") Long id) {
+        Optional<User> userDeleted = service.delete(id);
+
+        if(!userDeleted.isPresent()) return ResponseEntity.status(HttpStatus.CONFLICT).body(userDeleted.get().getLogin() + " não encontrado.");
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED.value()).body(userDeleted.get().getLogin() + " excluído.");
+    }
+
     @GET
-    @Path("/edit/{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public ResponseEntity findUser(@PathParam("id") Long id) {
         Optional<User> userOptional = this.service.findUser(id);

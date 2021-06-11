@@ -3,7 +3,7 @@
   <form [formGroup]="formUser" (ngSubmit)="onSubmit()">
     <div class="form-group profile">
       <label>Perfil:</label>
-      <p-dropdown required formControlName="profile" [options]="profiles" placeholder="Selecione um Perfil" optionLabel="name" [showClear]="true"></p-dropdown>
+      <p-dropdown required formControlName="profile" [options]="profiles" [(ngModel)]="selectedProfile" placeholder="Selecione um Perfil" optionLabel="name" [showClear]="true"></p-dropdown>
     </div>
 
     <div class="form-group login">
@@ -18,12 +18,12 @@
 
     <div class="form-group status">
       <label>Status:</label>
-      <p-dropdown required formControlName="status" [options]="status" placeholder="Selecione um Status" optionLabel="name" [showClear]="true"></p-dropdown>
+      <p-dropdown required formControlName="status" [options]="status" [(ngModel)]="selectedStatus"  placeholder="Selecione um Status" optionLabel="name" [showClear]="true"></p-dropdown>
     </div>
 
     <div class="form-group company">
       <label>Empresa:</label>
-      <p-dropdown required formControlName="company" [options]="company" placeholder="Selecione uma Empresa" optionLabel="name" [showClear]="true"></p-dropdown>
+      <p-dropdown required formControlName="company" [options]="company" [(ngModel)]="selectedCompany" placeholder="Selecione uma Empresa" optionLabel="name" [showClear]="true"></p-dropdown>
     </div>
 
     <div class="form-group ad">
@@ -32,7 +32,7 @@
     </div>
 
     <p-toast position="top-right"></p-toast>
-    <button (click)="showWaitMessage()" type="submit"><i class="fas fa-save"></i> Salvar</button>
+    <button type="submit"><i class="fas fa-save"></i> Salvar</button>
   </form>
 
   <ng-template [ngIf]="showProgessBar" >

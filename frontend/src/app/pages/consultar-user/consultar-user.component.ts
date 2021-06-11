@@ -7,6 +7,9 @@ import {Log} from "../../models/log.model";
 import {UserQuery} from "../../models/user-query.model";
 import {UserQueryService} from "../../services/user-query.service";
 import {take} from "rxjs/operators";
+import {CriarUserComponent} from "../criar-user/criar-user.component";
+import {EventoService} from "../../services/evento.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-consultar-user',
@@ -31,10 +34,12 @@ export class ConsultarUserComponent implements OnInit {
 
   pt: any;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
               private service: UserQueryService,
               private messageService: MessageService,
-              private confirmationService: ConfirmationService) {
+              private confirmationService: ConfirmationService,
+              private eventService: EventoService) {
 
     this.profiles = [
       {name: 'Administrador'},
@@ -86,6 +91,15 @@ export class ConsultarUserComponent implements OnInit {
         this.deleteUser(id);
       }
     });
+  }
+
+  public setUserToEdit(id: number) {
+    this.service.getUserById(id).pipe(take(1))
+      .subscribe((value) => {
+        let userEdit: UserQuery = value.body;
+        this.eventService.userEdit$.next(userEdit);
+        this.router.navigateByUrl('/portal/users/new');
+      })
   }
 
   public deleteUser(id: number){

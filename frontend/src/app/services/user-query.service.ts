@@ -23,6 +23,16 @@ export class UserQueryService {
       {headers: this.getAuthorizationFromHeader()});
   }
 
+  public updateUser(id: string, login: string, email: string, perfil: string, status: string, empresa: string): Observable<any>  {
+    return this.http.put(`${environment.API}/users/edit/` + id,
+      this.setBodyNew(perfil, login, email, status, empresa),
+      {headers: this.getAuthorizationFromHeader()});
+  }
+
+  public getUserById(id: number): Observable<any> {
+    return this.http.get(`${environment.API}/users/` + id, {headers: this.getAuthorizationFromHeader()});
+  }
+
   public deleteUser(id: number): Observable<any> {
     return this.http.delete(`${environment.API}/users/delete/` + id,
       {headers: this.getAuthorizationFromHeader()});

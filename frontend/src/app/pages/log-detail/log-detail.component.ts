@@ -16,7 +16,6 @@ import {MenuItem} from "primeng/api";
 export class LogDetailComponent implements OnInit {
 
   text: string = "Detalhamento do Log";
-  route: string = "Página Inicial » Logs » Detalhes"
   private items: MenuItem[] = [
     {label: 'Página Inicial', url: '/portal'},
     {label: 'Logs', url: '/portal/logs'},

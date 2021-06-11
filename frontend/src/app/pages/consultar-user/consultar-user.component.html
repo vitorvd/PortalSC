@@ -51,7 +51,7 @@
         <td>{{user.updatedAtFormatted}}</td>
         <td><i [ngStyle]="{'color': user.status == 'Ativo' ? 'green' : 'red'}"  class="fas fa-circle"></i></td>
         <td>
-          <i class="fas fa-pencil-alt"></i>
+          <i (click)="setUserToEdit(user.id)" class="fas fa-pencil-alt"></i>
           <i (click)="cofirmDialogToDelete(user.login, user.id)" class="fas fa-trash-alt"></i>
           <i class="fas fa-sync"></i>
         </td>
